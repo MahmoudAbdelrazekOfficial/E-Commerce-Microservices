@@ -15,10 +15,15 @@ namespace Catalog.Application.Handlers.Queries
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
+        public GetProductsByBrandQueryHandler(IProductRepository productRepository, IMapper mapper)
+        {
+            _mapper = mapper;
+            _productRepository = productRepository;
+        }
         public async Task<IList<ProductResponseDto>> Handle(GetProductsByBrandQuery request, CancellationToken cancellationToken)
         {
-            var productList = await _productRepository.GetAllProductsByBrand(request.BrandName);
-            var productResponseList = _mapper.Map<IList<ProductResponseDto>>(productList);
+            var productsList = await _productRepository.GetAllProductsByBrand(request.BrandName);
+            var productResponseList = _mapper.Map<IList<ProductResponseDto>>(productsList);
             return productResponseList;
         }
     }
