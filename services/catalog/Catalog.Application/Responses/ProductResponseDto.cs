@@ -20,7 +20,7 @@ namespace Catalog.Application.Responses
 
         [BsonRepresentation(MongoDB.Bson.BsonType.Decimal128)]
         public decimal Price { get; set; }
-        public ProductBrand Brand { get; set; }
-        public ProductType Type { get; set; }
+        public BrandResponseDto Brand { get; set; }
+        public TypeResponseDto Type { get; set; }
     }
 }
