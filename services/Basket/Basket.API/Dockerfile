@@ -12,6 +12,9 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["services/Basket/Basket.API/Basket.API.csproj", "services/Basket/Basket.API/"]
+COPY ["services/Basket/Basket.Application/Basket.Application.csproj", "services/Basket/Basket.Application/"]
+COPY ["services/Basket/Basket.Core/Basket.Core.csproj", "services/Basket/Basket.Core/"]
+COPY ["services/Basket/Basket.Infrastructure/Basket.Infrastructure.csproj", "services/Basket/Basket.Infrastructure/"]
 RUN dotnet restore "./services/Basket/Basket.API/Basket.API.csproj"
 COPY . .
 WORKDIR "/src/services/Basket/Basket.API"
