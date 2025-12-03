@@ -13,6 +13,6 @@ namespace Discount.Application.Commands
         public int Id { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
-        public int DiscountAmount { get; set; }
+        public double DiscountAmount { get; set; }
     }
 }
