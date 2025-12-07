@@ -51,7 +51,7 @@ namespace Discount.Infrastructure.Extentions
                     cmd.CommandText = "DROP TABLE IF EXISTS Coupon";
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = @"CREATE TABLE Coupon (ID SERIAL PRIMARY KEY,
-                                                      ProductName VARCHAR(500) NOTNULL ,
+                                                      ProductName VARCHAR(500) NOT NULL ,
                                                       Description TEXT,
                                                       DiscountAmount INT);";
                     cmd.ExecuteNonQuery();
