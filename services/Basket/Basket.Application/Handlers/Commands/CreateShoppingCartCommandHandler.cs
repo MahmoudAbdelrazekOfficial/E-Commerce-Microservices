@@ -31,7 +31,7 @@ namespace Basket.Application.Handlers.Commands
                 var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
                 if (coupon != null)
                 {
-                    item.Price -= (decimal)coupon.DiscountAmount; 
+                    item.Price -= coupon.DiscountAmount; 
                 }
             }
             
