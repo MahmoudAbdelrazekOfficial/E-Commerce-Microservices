@@ -42,7 +42,7 @@ namespace Discount.Infrastructure.Extentions
             {
                 try
                 {
-                    using var connection = new NpgsqlConnection(config.GetValue<string>("DatabaseSetting:ConnectionString"));
+                    using var connection = new NpgsqlConnection(config.GetValue<string>("DatabaseSettings:ConnectionString"));
                     connection.Open();
                     using var cmd = new NpgsqlCommand
                     {
@@ -51,14 +51,14 @@ namespace Discount.Infrastructure.Extentions
                     cmd.CommandText = "DROP TABLE IF EXISTS Coupon";
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = @"CREATE TABLE Coupon (ID SERIAL PRIMARY KEY,
-                                                      ProductName VARCHAR(500) NOTNULL ,
+                                                      ProductName VARCHAR(500) NOT NULL ,
                                                       Description TEXT,
-                                                      DiscountAmount INT";
+                                                      DiscountAmount INT);";
                     cmd.ExecuteNonQuery();
 
-                    cmd.CommandText = "INSERT INTO Coupon(ProductName,Description,DiscountAmout)VALUES('KeyBoard','Intel KeyBoard',20)";
+                    cmd.CommandText = "INSERT INTO Coupon(ProductName,Description,DiscountAmount)VALUES('KeyBoard','Intel KeyBoard',20)";
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = "INSERT INTO Coupon(ProductName,Description,DiscountAmout)VALUES('PowerFit','Power fit discount',10)";
+                    cmd.CommandText = "INSERT INTO Coupon(ProductName,Description,DiscountAmount)VALUES('PowerFit','Power fit discount',10)";
                     cmd.ExecuteNonQuery();
                     break;
                 }
