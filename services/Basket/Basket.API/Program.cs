@@ -1,3 +1,4 @@
+using Basket.Application;
 using Basket.Application.Commands;
 using Basket.Application.GrpcServices;
 using Basket.Application.Mappers;
@@ -14,15 +15,13 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddAutoMapper(typeof(BasketMappingProfile).Assembly);
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly(),
-    Assembly.GetAssembly(typeof(CreateShoppingCartCommand))));
+builder.Services.AddApplication();
 
-builder.Services.AddScoped<IBasketRepository,BasketRepository>();
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
 builder.Services.AddScoped<DiscountGrpcService>();
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
-    cfg=>cfg.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]));
+    cfg => cfg.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]));
 
 // Versioning
 builder.Services.AddApiVersioning(options =>
