@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Core.Repositories
 {
-    public interface IOrderRepository : IAsyncRepository<Order>
+    public interface IOrderRepository : IBaseRepository<Order>
     {
         Task<IEnumerable<Order>> GetOrdersByUserName(string userName);
     }

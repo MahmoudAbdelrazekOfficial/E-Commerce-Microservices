@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Ordering.Infrastructure.Repositories;
 
-    public class BaseRepository<T> : IAsyncRepository<T> where T : BaseEntity
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly OrderContext _context;
 
