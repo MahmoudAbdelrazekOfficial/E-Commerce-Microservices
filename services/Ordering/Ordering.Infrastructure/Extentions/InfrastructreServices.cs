@@ -15,7 +15,7 @@ namespace Ordering.Infrastructure.Extentions
                 configuration.GetConnectionString("ConnectionString"),
                 sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
                 ));
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IOrderRepository, OrderRepository>();
 
             return services;
