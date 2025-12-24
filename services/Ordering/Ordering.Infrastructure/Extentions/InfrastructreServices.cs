@@ -12,7 +12,7 @@ namespace Ordering.Infrastructure.Extentions
         public static IServiceCollection AddInfrastructureServices (this IServiceCollection services , IConfiguration configuration)
         {
             services.AddDbContext<OrderContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("ConnectionString"),
+                configuration.GetConnectionString("OrderingConnectionString"),
                 sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
                 ));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
