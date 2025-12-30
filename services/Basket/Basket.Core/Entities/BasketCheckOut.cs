@@ -1,6 +1,6 @@
 ﻿namespace Basket.Core.Entities
 {
-    internal class BasketCheckOut
+    public class BasketCheckOut
     {
         public string UserName { get; set; }
         public decimal TotalPrice { get; set; }
