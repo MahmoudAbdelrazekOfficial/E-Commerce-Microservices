@@ -5,6 +5,7 @@ using Basket.Application.Mappers;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
 using Discount.Grpc.Protos;
+using MassTransit;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,18 @@ builder.Services.AddScoped<DiscountGrpcService>();
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     cfg => cfg.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]));
 
+//MassTransient with rabbitmq
+builder.Services.AddMassTransit(config =>
+{
+    config.UsingRabbitMq((ct, cfg) =>
+    {
+        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+
+    });
+});
+builder.Services.AddMassTransitHostedService();
+
+
 // Versioning
 builder.Services.AddApiVersioning(options =>
 {
@@ -35,9 +48,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = "Catalog API",
+        Title = "Basket API",
         Version = "v1",
-        Description = "This API for catalog microservices in my application",
+        Description = "This API for Basket microservices in my application",
         Contact = new Microsoft.OpenApi.Models.OpenApiContact
         {
             Name = "Mahmoud Abdelrazek",
