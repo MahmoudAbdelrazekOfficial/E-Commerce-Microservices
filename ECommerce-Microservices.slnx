@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Infrastructure/">
     <Project Path="Infrastructure/EventBus.Messages/EventBus.Messages.csproj" Id="1648d545-b862-475e-82e0-c2945ec499d5" />
+    <Project Path="Infrastructure/Logging/Common.Logging/Common.Logging.csproj" Id="dab8afcf-d403-4466-be07-8e050557709a" />
   </Folder>
   <Folder Name="/services/" />
   <Folder Name="/services/Basket/">
