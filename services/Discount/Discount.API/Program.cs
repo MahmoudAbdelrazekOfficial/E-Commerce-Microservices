@@ -1,3 +1,4 @@
+using Common.Logging;
 using Discount.API.Services;
 using Discount.Application.Mappers;
 using Discount.Application.Queries;
@@ -5,11 +6,14 @@ using Discount.Core.Repositories;
 using Discount.Infrastructure.Extentions;
 using Discount.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Serilog
+builder.Host.UseSerilog(Logging.ConfigureLogger);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
